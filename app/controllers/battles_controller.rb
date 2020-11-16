@@ -1,6 +1,6 @@
 class BattlesController < ApplicationController
   before_action :set_battle, only: :show
-  before_action :set_players, only: [:new, :create]
+  before_action :set_players, only: %i[new create]
 
   def index
     @battles = Battle.all
