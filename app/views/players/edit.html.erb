@@ -1,1 +1,8 @@
-<h1>Players#edit</h1>
+<div class="container">
+  <h1>Modify your player:</h1>
+  <div class="form-width">
+    <%= simple_form_for @player, url: player_path(@player) do |f| %>
+      <%= render 'form', f: f %>
+    <% end %>
+  </div>
+</div>
