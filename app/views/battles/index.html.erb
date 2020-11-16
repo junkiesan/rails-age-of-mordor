@@ -4,14 +4,24 @@
     <%= link_to "Launch a new battle", new_battle_path, class: 'btn-submit-small' %>
   </div>
   <% if @battles.empty? %>
-    No battles were fought yet.
-    <%= link_to "Launch your first battle!", new_battle_path %>
+    <div class="m-t-40">
+      No battles were fought yet.
+      <%= link_to "Launch your first battle!", new_battle_path, class: 'yellow-link' %>
+    </div>
   <% else %>
     <table class="margin-dotted-table">
-      <tr></tr>
-      <% @battle.each do |battle| %>
-        <tr>
-          <td><%= battle.winner %></td>
+      <tr>
+        <td><strong>Winner 👍</strong></td>
+        <td></td>
+        <td><strong>Loser 👎</strong></td>
+        <td></td>
+      </tr>
+      <% @battles.each do |battle| %>
+        <tr class="battle-item">
+          <td><%= battle.winner.name %> - <%= battle.winner_score %></td>
+          <td>VS</td>
+          <td><%= battle.loser.name %> - <%= battle.loser_score %></td>
+          <td><p class="text-transparent m-b-0"><em><%= battle.created_at.strftime('%a, %B %e %Y - %l:%M %p') %></em></p></td>
         </tr>
       <% end %>
     </table>
