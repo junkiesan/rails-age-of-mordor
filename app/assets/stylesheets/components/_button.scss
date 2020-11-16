@@ -1,0 +1,40 @@
+a.button-start {
+  background-color: #C76929;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 24px;
+  color: #af9797;
+  font-family: 'Eczar', serif;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.btn-submit {
+  background-color: #FFC65A;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 24px;
+  color: #af9797;
+  font-family: 'Eczar', serif;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.btn-submit-small {
+  background-color: $yellow;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: $gray;
+  font-family: 'Eczar', serif;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    color: $gray;
+  }
+}

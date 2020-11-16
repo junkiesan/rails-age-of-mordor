@@ -1,12 +1,28 @@
-.navbar-lewagon {
+.battle-navbar {
+  padding: 10px 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: white;
+  margin-bottom: 30px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
+img.logo {
   width: 40px;
+  height: 40px;
+}
+
+.navbar-right-content {
+  display: flex;
+  p {
+    margin: 0 20px;
+  }
+  a {
+    color: rgba(255,255,255,0.3);
+    font-family: 'Eczar', serif;
+    &:hover {
+      text-decoration: none;
+      color: rgba(255,255,255,1);
+    }
+  }
 }

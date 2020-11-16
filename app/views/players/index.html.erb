@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="index-header">
+    <h1>Players</h1>
+    <%= link_to "Create a new player", new_player_path, class: 'btn-submit-small' %>
+  </div>
+  <% if @players.empty? %>
+    <p class="m-b-0 m-t-40">Bummer! There are no players.</p>
+    <p>Please create at least two players! ☝️</p>
+
+  <% else %>
+    <table class="margin-dotted-table text-center">
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Traits</strong></td>
+        <td><strong>Lives</strong></td>
+        <td><strong>Attack</strong></td>
+        <td><strong>Victory %</strong></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% @players.each do |player| %>
+        <tr data-player-id="<%= player.id %>">
+          <td>
+            <div class="player-picture">
+              <div class="dead-player <%= 'display-none' if player.life_points >   0 %>">
+                <i class="fas fa-dizzy"></i>
+              </div>
+              <% if player.picture_url %>
+                <%= cl_image_tag player.picture, height: 100, width: 100, crop: :thumb, gravity: :face %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: 'avatar-large' %>
+              <% end %>
+            </div>
+          </td>
+          <td><strong><%= player.name %></strong></td>
+          <td>
+            <div class="m-s-40">
+              <span class="m-r-15">💡 <%= player.intelligence_points %></span>
+              <span class="m-r-15">💫 <%= player.magic_points %></span>
+              <span class="m-r-15">💪 <%= player.strength_points %></span>
+            </div>
+          </td>
+          <td>
+            <%= player.life_points %> <i class="fas fa-heart"></i>
+          </td>
+          <td>
+            <%= player.attack_points %> <i class="fas fa-fist-raised"></i>
+          </td>
+          <td>
+            <%= player.primary_battles.any? || player.secondary_battles.any? ? (player.victory_ratio * 100).round : "0"  %> %
+          </td>
+          <td>
+            <%= link_to edit_player_path(player), class: 'yellow-link' do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to player_path(player), method: :delete, remote: true, class: 'yellow-link' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

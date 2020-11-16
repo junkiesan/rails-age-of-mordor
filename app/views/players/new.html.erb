@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Create your player</h1>
+
+  <p class="text-transparent m-b-0">
+    - You have only 15 points to distribute between Strength 💪, Magic 💫 and Intelligence 💡
+  </p>
+  <p class="text-transparent m-b-0">
+    - Strength 💪, Magic 💫 and Intelligence 💡 must be between 0 and 13.
+  </p>
+  <p class="text-transparent">
+    - Your player will have by default 3 life points <i class="fas fa-heart"></i> and 1 attack point <i class="fas fa-fist-raised"></i>.
+  </p>
+  <div class="form-width">
+    <%= simple_form_for(@player) do |f| %>
+      <%= f.input :name, input_html: { class: 'form-input' } %>
+      <%= f.input :strength_points, label: 'Strength 💪', input_html: { class: 'form-input' } %>
+      <%= f.input :intelligence_points, label: 'Intelligence 💡', input_html: { class: 'form-input' } %>
+      <%= f.input :magic_points, label: 'Magic 💫', input_html: { class: 'form-input' } %>
+      <%= f.input :avatar %>
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.button :submit, class: 'btn-submit' %>
+    <% end %>
+  </div>
+</div>

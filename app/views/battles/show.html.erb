@@ -1,0 +1,25 @@
+<h1>Battle n° <%= @battle.id %></h1>
+ <p>With:</p>
+
+<p>Player 1: <%= @player_1.name %></p>
+<p>Player 2: <%= @player_2.name %></p>
+
+<% if @winner %>
+  <p>The winner is: <%= @winner.name %></p>
+  <p>Scores are:</p>
+  <p><%= @player_1.name %>: <%= @score_1 %> </p>
+  <p><%= @player_2.name %>: <%= @score_2 %> </p>
+<% else %>
+  <p>There's a draw!</p>
+<% end %>
+
+<p>Recap post battle</p>
+<p><%= @player_1.name %></p>
+<p>Life points: <%= @player_1.life_points %></p>
+<p>Attack points: <%= @player_1.attack_points %></p>
+
+<hr>
+
+<p><%= @player_2.name %></p>
+<p>Life points: <%= @player_2.life_points %></p>
+<p>Attack points: <%= @player_2.attack_points %></p>

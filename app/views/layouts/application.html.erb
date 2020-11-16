@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>AgeOfMordor</title>
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,6 +13,7 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' if !(params['controller'] == 'pages' && params['action'] == 'home') %>
     <%= yield %>
   </body>
 </html>
