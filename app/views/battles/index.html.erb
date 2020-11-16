@@ -1,1 +1,19 @@
-<h1>ALL BATLLES</h1>
+<div class="container">
+  <div class="index-header">
+    <h1>Battles</h1>
+    <%= link_to "Launch a new battle", new_battle_path, class: 'btn-submit-small' %>
+  </div>
+  <% if @battles.empty? %>
+    No battles were fought yet.
+    <%= link_to "Launch your first battle!", new_battle_path %>
+  <% else %>
+    <table class="margin-dotted-table">
+      <tr></tr>
+      <% @battle.each do |battle| %>
+        <tr>
+          <td><%= battle.winner %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
