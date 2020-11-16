@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :set_player, only: %i[edit update]
 
   def index
     @players = Player.all
@@ -22,12 +23,21 @@ class PlayersController < ApplicationController
   end
 
   def update
+    if @player.update(player_params)
+      redirect_to battles_path
+    else
+      render :edit
+    end
   end
 
   def destroy
   end
 
   private 
+
+  def set_player
+    @player = Player.find(params[:id])
+  end
 
   def players_params
     params.require(:player).permit(:name,
