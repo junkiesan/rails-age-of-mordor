@@ -12,8 +12,8 @@
     <div class="player-list">
         <% @players.each do |player| %>
           <div class="player-item text-center" data-player-id=<%= "#{player.id}" %>>
-            <% if player.picture_url %>
-              <%= cl_image_tag player.picture, height: 100 %>
+            <% if player.avatar_url %>
+              <%= cl_image_tag player.avatar, height: 100 %>
             <% else %>
               <%= image_tag 'avatar.png', class: 'avatar-large' %>
             <% end %>
