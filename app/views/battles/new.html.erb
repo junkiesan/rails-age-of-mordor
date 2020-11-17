@@ -5,30 +5,26 @@
   <% elsif @players_count == 1 %>
     <h1>Oh crap!</h1>
     <p class="text-transparent">You cannot launch a battle with only one player!</p>
-    You have <%= @players_count %> player!
-    <p><%= @players.first.name %></p>
-    Create at least <%= link_to "another player", new_player_path %>
+    <div class="player-item text-center width-100">
+      <%= render 'shared/player_card', player: player %>
+    </div>
+    <%= link_to "Create at least another player", new_player_path, class: 'btn-submit-small' %>
   <% else %>
     <h1>Choose two players 🤝</h1>
-    <p class="subtitle">Click on the avatar of two players - or <%= link_to "create a new player", new_player_path %>.</p>
-    You have <%= @players_count %> players!
+    <p class="text-transparent m-b-0">Click on the avatar of two players - you can also <%= link_to "create a new player", new_player_path, class: 'yellow-link' %>.</p>
+    <p class="text-transparent m-b-0">- Be careful, if a player loses a battle, he loses a life <i class="fas fa-heart"></i>. If he wins, he gains attack points <i class="fas fa-fist-raised"></i>!</p>
+    <p class="text-transparent">- When a player has lost all his lives, he cannot fight anymore! He's dead <i class="fas fa-dizzy"></i></p>    You have <%= @players_count %> players!
     <div class="player-list">
         <% @players.each do |player| %>
-          <div class="player-item text-center" data-player-id=<%= "#{player.id}" %>>
-            <% if player.avatar_url %>
-              <%= cl_image_tag player.avatar, height: 100, width: 100, crop: :thumb, gravity: :face %>
-            <% else %>
-              <%= image_tag 'avatar.png', class: 'avatar-large' %>
-            <% end %>
-            <p><%= player.name %></p>
-            <p class="text-transparent"><%= player.life_points %> <i class="fas fa-heart"></i></p>
-          </div>
+        <div class="player-item text-center <%= 'selected' if @battle.player_1_id == player.id %>" data-player-id=<%= "#{player.id}" %>>
+          <%= render 'shared/player_card', player: player %>
+        </div>
         <% end %>
       </div>
       <%= simple_form_for(@battle) do |f| %>
       <%= f.input :player_1_id, as: :hidden, error: false %>
       <%= f.input :player_2_id, as: :hidden, error: false %>
-      <%= f.button :submit %>
+      <%= f.button :submit, 'Launch the battle!', class: "btn-submit" %>
     <% end %>
   <% end %>   
 </div>
