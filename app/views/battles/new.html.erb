@@ -1,7 +1,10 @@
 <div class="container step-content">
   <% if @players.empty? %>
+    <p class="text-transparent">You cannot launch a battle without any players!</p>
     <%= link_to "Create at least two players!", new_player_path %>
   <% elsif @players_count == 1 %>
+    <h1>Oh crap!</h1>
+    <p class="text-transparent">You cannot launch a battle with only one player!</p>
     You have <%= @players_count %> player!
     <p><%= @players.first.name %></p>
     Create at least <%= link_to "another player", new_player_path %>
