@@ -33,12 +33,9 @@ class Player < ApplicationRecord
   end
 
   def self.adjust_life_attack(battle)
-    winner = Player.find(battle.winner)
-    loser = Player.find(battle.loser)
-    winner.life_points += 1
-    winner.attack_points += 0.3
-    loser.life_points -= 1
-    winner.save
-    loser.save
+    battle.winner.attack_points += 0.3
+    battle.loser.life_points -= 1
+    battle.winner.save
+    battle.loser.save
   end
 end
