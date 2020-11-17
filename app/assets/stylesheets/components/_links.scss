@@ -1,6 +1,7 @@
 .yellow-link {
   color: $yellow;
   &:hover {
+    text-decoration: none;
     color: $yellow;
     opacity: 0.5;
   }
