@@ -41,8 +41,18 @@ player = Player.new(
 player.remote_avatar_url = 'app/assets/images/legolas.png'
 player.save
 
-# puts "Created #{Player.count} players:
-#   #{Player.first.name},
-#   #{Player.second.name},
-#   #{Player.third.name} and
-#   #{Player.fourth.name} 👌"
+player = Player.new(
+  name: 'Julien le Grand',
+  strength_points: 10,
+  intelligence_points: 1,
+  magic_points: 3
+)
+player.remote_avatar_url = 'app/assets/images/julien.gif'
+player.save
+
+puts "Created #{Player.count} players:
+  #{Player.first.name},
+  #{Player.second.name},
+  #{Player.third.name},
+  #{Player.fourth.name} and
+  #{Player.fifth.name} 👌"
