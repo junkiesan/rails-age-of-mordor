@@ -7,8 +7,20 @@ h2 {
   font-size: 24px;
 }
 
+p.text-transparent {
+  opacity: 0.4;
+}
+
 p.fixed-width-p {
   width: 300px;
+}
+
+.width-100 {
+  max-width: 100px;
+}
+
+.width-500 {
+  max-width: 500px;
 }
 
 .m-b-40 {
