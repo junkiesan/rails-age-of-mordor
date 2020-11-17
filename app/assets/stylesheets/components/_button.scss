@@ -38,3 +38,19 @@ a.button-start {
     color: $gray;
   }
 }
+
+.btn-submit-small-navbar {
+  margin: 0 40px;
+  background-color: $yellow;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: $gray;
+  font-family: 'Eczar', serif;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    color: $gray;
+  }
+}
