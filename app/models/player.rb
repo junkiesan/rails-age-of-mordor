@@ -3,6 +3,7 @@ class Player < ApplicationRecord
   has_many :secondary_battles, class_name: 'Battle', foreign_key: 'player_2_id'
   has_many :won_battles, class_name: 'Battle', foreign_key: 'winner_id'
   has_many :lost_battles, class_name: 'Battle', foreign_key: 'loser_id'
+  has_one_attached :avatar
 
   mount_uploader :avatar, AvatarUploader
   validates :name, uniqueness: true, presence: true
