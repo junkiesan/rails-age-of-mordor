@@ -6,13 +6,16 @@ class Player < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
   validates :name, uniqueness: true, presence: true
-  # validates :avatar, presence: true
   validates :strength_points, presence: true
   validates :intelligence_points, presence: true
   validates :magic_points, presence: true
   validates :strength_points, inclusion: 0..10
   validates :intelligence_points, inclusion: 0..10
   validates :magic_points, inclusion: 0..10
+  validates :avatar, allow_blank: true, format: {
+    with: %r{\.gif|jpg|png}i, # rubocop:disable Style/RegexpLiteral
+    message: 'must be a gif, jpg, or png image.'
+  }
   validate :max_10_points
 
   def max_10_points
