@@ -31,4 +31,14 @@ class Player < ApplicationRecord
   def victory_ratio
     won_battles.count.to_f / (primary_battles + secondary_battles).count.to_f
   end
+
+  def self.adjust_life_attack(battle)
+    winner = Player.find(battle.winner)
+    loser = Player.find(battle.loser)
+    winner.life_points += 1
+    winner.attack_points += 0.3
+    loser.life_points -= 1
+    winner.save
+    loser.save
+  end
 end

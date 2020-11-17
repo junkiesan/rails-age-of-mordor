@@ -19,7 +19,7 @@ class BattlesController < ApplicationController
     @players_count = Player.count
   end
 
-  def create
+   def create # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     @battle = Battle.new(battle_params)
     if @battle.save
       Battle.update_battle_scores(@battle)
