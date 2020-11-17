@@ -1,11 +1,11 @@
 .first-picked img {
-  opacity: 0.4;
-  border: solid #FFC65A;
+  opacity: 1 !important;
+  border: solid #FFC65A !important;
 }
 
 .second-picked img {
-  // opacity: 0.2;
-  border: solid #FFC65A;
+  opacity: 1 !important;
+  border: solid #FFC65A !important;
 }
 
 .player-list {
@@ -22,7 +22,8 @@
   img {
     border-radius: 50%;
     margin-bottom: 20px;
-    border: solid $red;
+    border: solid #C43E1C;
+    opacity: 0.7;
   }
 }
 
