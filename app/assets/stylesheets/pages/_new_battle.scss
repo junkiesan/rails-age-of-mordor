@@ -1,26 +1,11 @@
 .first-picked img {
   opacity: 0.4;
+  border: solid #FFC65A;
 }
 
 .second-picked img {
   // opacity: 0.2;
   border: solid #FFC65A;
-}
-
-.step-content {
-  h1 {
-    font-size: 40px;
-  }
-  p.subtitle {
-    font-size: 16px;
-    opacity: 0.4;
-  }
-  a {
-    color: #FFC65A;
-    &:hover {
-      text-decoration: none;
-    }
-  }
 }
 
 .player-list {
@@ -30,17 +15,17 @@
 }
 
 .player-item {
-  margin: 0 20px;
+  margin: 20px 20px;
   p {
     margin-bottom: 0;
   }
+  img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: solid $red;
+  }
 }
 
-.player-item img {
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-p.text-transparent {
-  opacity: 0.4;
+.selected img {
+  opacity: 0.2;
 }
