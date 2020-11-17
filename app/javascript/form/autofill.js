@@ -18,6 +18,8 @@ const formAutoFill = () => {
               player.classList.remove('first-picked');
             } else if (player.classList.contains('second-picked')) {
               player.classList.remove('second-picked');
+            } else if (player.classList.contains('selected')) {
+              player.classList.remove('selected');
             }
           })
           e.currentTarget.classList.add('first-picked');
