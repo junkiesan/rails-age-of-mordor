@@ -7,3 +7,26 @@
     margin: 0;
   }
 }
+
+.player-picture {
+  position: relative;
+}
+
+.dead-player {
+  font-size: 40px;
+  color: $gray;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.display-none {
+  display: none;
+}

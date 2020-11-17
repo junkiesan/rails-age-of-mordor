@@ -26,7 +26,7 @@
               <div class="dead-player <%= 'display-none' if player.life_points >   0 %>">
                 <i class="fas fa-dizzy"></i>
               </div>
-              <% if player.avatat_url %>
+              <% if player.avatar_url %>
                 <%= cl_image_tag player.avatar, height: 100, width: 100, crop: :thumb, gravity: :face %>
               <% else %>
                 <%= image_tag 'avatar.png', class: 'avatar-large' %>

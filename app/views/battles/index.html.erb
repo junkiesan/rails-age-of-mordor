@@ -18,10 +18,20 @@
       </tr>
       <% @battles.each do |battle| %>
         <tr class="battle-item">
-          <td><%= battle.winner.name %> - <%= battle.winner_score %></td>
-          <td>VS</td>
-          <td><%= battle.loser.name %> - <%= battle.loser_score %></td>
-          <td><p class="text-transparent m-b-0"><em><%= battle.created_at.strftime('%a, %B %e %Y - %l:%M %p') %></em></p></td>
+          <% if battle.score1 == battle.score2 %>
+            <td></td>
+            <td>Match nul!</td>
+            <td></td>
+          <% else %>
+            <td>
+              <%= battle.winner ? battle.winner.name : "Deleted player 😵" %><%=" - #{battle.winner_score}" if battle.winner %>
+            </td>
+            <td>VS</td>
+            <td>
+              <%= battle.loser ? battle.loser.name : "Deleted player 😵" %><%=" - #{battle.loser_score}" if battle.loser %>
+            </td>
+          <% end %> 
+            <td><p class="text-transparent m-b-0"><em><%= battle.created_at.strftime('%a, %B %e %Y - %l:%M %p') %></em></p></td>
         </tr>
       <% end %>
     </table>
