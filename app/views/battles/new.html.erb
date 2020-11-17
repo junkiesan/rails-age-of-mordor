@@ -23,8 +23,8 @@
         <% end %>
       </div>
       <%= simple_form_for(@battle) do |f| %>
-      <%= f.input :player_1_id, as: :hidden %>
-      <%= f.input :player_2_id, as: :hidden %>
+      <%= f.input :player_1_id, as: :hidden, error: false %>
+      <%= f.input :player_2_id, as: :hidden, error: false %>
       <%= f.button :submit %>
     <% end %>
   <% end %>   
