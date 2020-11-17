@@ -37,15 +37,6 @@ class BattlesController < ApplicationController
     end
   end
 
-  def adjust_life_attack(battle)
-    winner = Player.find(battle.winner)
-    loser = Player.find(battle.loser)
-    winner.life_points += 1
-    winner.attack_points += 0.3
-    loser.life_points -= 1
-    winner.save
-    loser.save
-  end
   private
 
   def flash_alerts
