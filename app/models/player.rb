@@ -17,9 +17,9 @@ class Player < ApplicationRecord
     with: %r{\.gif|jpg|png}i, # rubocop:disable Style/RegexpLiteral
     message: 'must be a gif, jpg, or png image.'
   }
-  validate :max_10_points
+  validate :max_20_points
 
-  def max_10_points
+  def max_20_points
     total_skills = strength_points + intelligence_points + magic_points
     errors.add(:strength_points, 'Skill points > 20') if total_skills > 20
   end
@@ -31,12 +31,5 @@ class Player < ApplicationRecord
 
   def victory_ratio
     won_battles.count.to_f / (primary_battles + secondary_battles).count.to_f
-  end
-
-  def self.adjust_life_attack(battle)
-    battle.winner.attack_points += 0.3
-    battle.loser.life_points -= 1
-    battle.winner.save
-    battle.loser.save
   end
 end

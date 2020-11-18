@@ -47,6 +47,13 @@ class Battle < ApplicationRecord
     battle.save
   end
 
+  def adjust_life_attack(battle)
+    battle.winner.attack_points += 0.3
+    battle.loser.life_points -= 1
+    battle.winner.save
+    battle.loser.save
+  end
+
   def two_different_players
     message = 'The two players must be different!'
     errors.add(:player_2_id, message) if player_2_id == player_1_id
