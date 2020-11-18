@@ -33,13 +33,13 @@ class Battle < ApplicationRecord
     winner_or_loser(score1, score2)[:loser_score]
   end
 
-  def self.update_battle_scores(battle)
+  def update_battle_scores(battle)
     battle.score1 = battle.player_1.score
     battle.score2 = battle.player_2.score
     battle.save
   end
 
-  def self.update_battle_winner_loser(battle)
+  def update_battle_winner_loser(battle)
     battle.winner = battle.battle_winner
     battle.loser = battle.battle_loser
     battle.winner_score = battle.battle_winner_score
