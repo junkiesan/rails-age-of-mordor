@@ -14,7 +14,7 @@ class Battle < ApplicationRecord
     save
   end
 
-  def update_battle_winner_loser(battle)
+  def update_battle_winner_loser
     self.winner = winner_loser[:winner]
     self.loser = winner_loser[:loser]
     self.winner_score = winner_loser_score[:winner_score]
