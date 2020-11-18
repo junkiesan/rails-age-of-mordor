@@ -22,14 +22,7 @@ class BattlesController < ApplicationController
    def create # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     @battle = Battle.new(battle_params)
     if @battle.save
-      Battle.update_battle_scores(@battle)
-      if @battle.score1 == @battle.score2
-        @battle.draw = true
-        @battle.save
-      else
-        Battle.update_battle_winner_loser(@battle)
-        Player.adjust_life_attack(@battle)
-      end
+      AfterBattleService.new.update(@battle)
       redirect_to battle_path(@battle)
     else
       flash.now[:alert] = flash_alerts
