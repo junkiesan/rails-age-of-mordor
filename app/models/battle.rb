@@ -8,55 +8,46 @@ class Battle < ApplicationRecord
   validates :player_2_id, presence: true
   validate :two_different_players
 
-  def winner_or_loser(score1, score2)
-    {
-      winner: score1 > score2 ? player_1 : player_2,
-      loser: score1 > score2 ? player_2 : player_1,
-      winner_score: score1 > score2 ? score1 : score2,
-      loser_score: score1 > score2 ? score2 : score1
-    }
-  end
-
-  def battle_winner
-    winner_or_loser(score1, score2)[:winner]
-  end
-
-  def battle_loser
-    winner_or_loser(score1, score2)[:loser]
-  end
-
-  def battle_winner_score
-    winner_or_loser(score1, score2)[:winner_score]
-  end
-
-  def battle_loser_score
-    winner_or_loser(score1, score2)[:loser_score]
-  end
-
-  def update_battle_scores(battle)
-    battle.score1 = battle.player_1.score
-    battle.score2 = battle.player_2.score
-    battle.save
+  def update_battle_scores
+    self.score1 = player_1.score
+    self.score2 = player_2.score
+    save
   end
 
   def update_battle_winner_loser(battle)
-    battle.winner = battle.battle_winner
-    battle.loser = battle.battle_loser
-    battle.winner_score = battle.battle_winner_score
-    battle.loser_score = battle.battle_loser_score
-    battle.save
+    self.winner = winner_loser[:winner]
+    self.loser = winner_loser[:loser]
+    self.winner_score = winner_loser_score[:winner_score]
+    self.loser_score = winner_loser_score[:loser_score]
+    save
   end
 
-  def adjust_life_attack(battle)
-    battle.winner.attack_points += 0.3
-    battle.loser.life_points -= 1
-    battle.winner.save
-    battle.loser.save
+  def adjust_life_attack
+    winner.attack_points += 0.3
+    loser.life_points -= 1
+    winner.save
+    loser.save
   end
 
   def two_different_players
     message = 'The two players must be different!'
     errors.add(:player_2_id, message) if player_2_id == player_1_id
+  end
+
+  private 
+
+  def winner_loser
+    {
+      winner: score1 > score2 ? player_1 : player_2,
+      loser: score1 > score2 ? player_2 : player_1
+    }
+  end
+
+  def winner_loser_score
+    {
+      winner_score: score1 > score2 ? score1 : score2,
+      loser_score: score1 > score2 ? score2 : score1
+    }
   end
 end
 
